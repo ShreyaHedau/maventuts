@@ -1,0 +1,50 @@
+maventuts
+
+-make a maven project
+	- project structure should be like
+		- src
+			- main(where all packages are created with there java classes)
+				- com.maventuts.controller
+					-controller1.java
+				- com.maventuts.repository
+					-repostiory1.java
+			- resources
+			- webapp
+				-WEB-INF
+					- views(folder)
+						- hello.jsp
+				 - web.xml
+				 - dispatcher-servlet.xml	
+
+
+
+spring mvc (pure java) without web.xml
+	- project structure is same as above.
+	- but web.xml should be like
+
+
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+<servlet>
+<servlet-name>springDispatcherServlet</servlet-name>
+  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  <init-param>
+    <param-name>contextClass</param-name>
+    <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+   </init-param>
+   <init-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/*path to your WebSpringConfig*/ </param-value>
+  </init-param>
+  <load-on-startup>1</load-on-startup>
+</servlet>
+   <servlet-mapping>
+        <servlet-name>springDispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>
+				
